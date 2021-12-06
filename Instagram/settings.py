@@ -27,11 +27,7 @@ cloudinary.config(
 )
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config('CLOUD_KEY'),
-    'API_SECRET': config('CLOUD_SECRET')
-}
+
 
 
 
