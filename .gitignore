@@ -1,0 +1,5 @@
+.env
+*pyc
+env_insta/
+__pycashe__
+.vscode

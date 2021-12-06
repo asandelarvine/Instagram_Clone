@@ -6,7 +6,7 @@ from django.contrib.sessions.backends.base import UpdateError
 from django.core.exceptions import SuspiciousOperation
 from django.utils.cache import patch_vary_headers
 from django.utils.deprecation import MiddlewareMixin
-from django.utils.http import cookie_date
+from django.utils.http import http_date
 
 
 class SessionMiddleware(MiddlewareMixin):
@@ -39,6 +39,7 @@ class SessionMiddleware(MiddlewareMixin):
                     settings.SESSION_COOKIE_NAME,
                     path=settings.SESSION_COOKIE_PATH,
                     domain=settings.SESSION_COOKIE_DOMAIN,
+                    samesite=settings.SESSION_COOKIE_SAMESITE,
                 )
             else:
                 if accessed:
@@ -50,7 +51,7 @@ class SessionMiddleware(MiddlewareMixin):
                     else:
                         max_age = request.session.get_expiry_age()
                         expires_time = time.time() + max_age
-                        expires = cookie_date(expires_time)
+                        expires = http_date(expires_time)
                     # Save the session data and refresh the client cookie.
                     # Skip session save for 500 responses, refs #3881.
                     if response.status_code != 500:
@@ -69,5 +70,6 @@ class SessionMiddleware(MiddlewareMixin):
                             path=settings.SESSION_COOKIE_PATH,
                             secure=settings.SESSION_COOKIE_SECURE or None,
                             httponly=settings.SESSION_COOKIE_HTTPONLY or None,
+                            samesite=settings.SESSION_COOKIE_SAMESITE,
                         )
         return response
