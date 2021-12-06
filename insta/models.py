@@ -104,5 +104,5 @@ class Follows(models.Model):
   followee = models.ForeignKey(Profile, related_name='followers',on_delete = models.CASCADE)
 
   def __str__(self):
-    return "%s follower" % self.follower
+    return "%s follower" % self.follower 
 
