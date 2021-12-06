@@ -1,0 +1,69 @@
+{% extends 'auth/base.html' %}
+{% load crispy_forms_tags %} 
+{% load static %}
+{% block content %}
+{{block.super}}
+
+<style>
+  .dark{
+    display: none;
+  }
+  #flex{
+   display: flex; 
+  }
+  .bord{
+    border-style: solid;
+    border-color: lightgray;
+    border-left: none;
+    border-radius: 5px;
+    border-width: thin;
+  }
+  .btn{
+    padding: 3px 5px;
+    font-size: 20px;
+    border-radius: 5px;
+    width:100%;
+    border-width: thin;
+  }
+</style>
+
+<div class="container " style="margin-left: 40%;">
+  <div class="row">
+   
+    <div class="col-md-4 pt-3 mt-3 bord">
+      <label for="" class="border-bottom mb-4 text-center" style="margin-left: 35%;margin-top: 5px;"><img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt=""> </label> 
+      <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+         
+          {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-info" type="submit">Login</button>
+        </div>
+      </form>
+      <div class="text-center text-info">
+        Login With Facebook
+      </div>
+      <br>
+      <div class="text-center text-info" style="font-size: 10px;">
+          Forgotten your password?
+       </div>
+    
+
+      <div class="border-top pt-3 text-center text-info">
+        <small class="text-muted">Don't have an account?  <a href="{% url 'register' %}" class="ml-2">Sign Up</a></small>
+      </div>
+
+      <div class="text-center" style="padding: 2px;margin-top: 2em;"> <p> Get the app.</p></div>
+      
+      <div id="flex" class="pl-2 pt-3 mt-3">
+        <img src="{% static 'img/insta1.png' %}" alt="" height="50" width="180" >
+        <img src="{% static 'img/insta2.png' %}" alt=""  height="50">
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+{% endblock %}

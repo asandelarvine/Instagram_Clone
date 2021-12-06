@@ -1,0 +1,72 @@
+{% extends 'auth/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+{{block.super}}
+
+<style>
+  .border{
+    border-style: solid;
+    border-color: lightgray;
+    border-left: none;
+    border-radius: 5px;
+    border-width: thin;
+  }
+  li{
+    display: none;
+  }
+  #flex{
+   display: flex; 
+  }
+  .btn{
+    padding: 3px 5px;
+    font-size: 20px;
+    border-radius: 5px;
+    width:100%;
+    border-width: thin;
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+     
+    </div>
+    <div class="col-md-4 border">
+     
+      <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+        
+        
+          <label for="" class="border-bottom mb-4 text-center" style="margin-left: 35%;margin-top: 5px;"><img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt=""> </label> <br> <h6 class="text-center">Sign up to see photos and videos from your friends.</h6>
+          <div class="form-group">
+            <button class="btn" type="submit" style="background: #0095f6;color: white; font-weight:bold ;">Login With Facebook</button>
+          </div>
+          {{form|crispy}}
+        </fieldset>
+        
+        <div class="form-group">
+          <button class="btn btn-info" type="submit">Sign Up</button>
+        </div>
+        <div class="text-center">
+          <p style="font-size: x-small;">By signing up, you agree to our Terms , Data <br> Policy and Cookies Policy .</p>
+        </div>
+        <div class="text-center" style="border:1px solid rgb(223, 215, 215) ;padding: 1.5em;">
+          Have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+        </div>
+        <div class="text-center"> <p> Get the app.</p></div>
+        <div id="flex" class="pl-2 pt-3 mt-3">
+          <img src="{% static 'img/insta1.png' %}" alt="" height="50" width="180" >
+          <img src="{% static 'img/insta2.png' %}" alt=""  height="50">
+        </div>
+      </form>
+      <div class="border-top pt-3">
+        <small class="text-muted">Have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a></small>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+{% endblock %}
