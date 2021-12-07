@@ -19,19 +19,12 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-#adding config
-cloudinary.config( 
-  cloud_name = config('CLOUD_NAME'), 
-  api_key =  config('CLOUD_KEY'), 
-  api_secret = config('CLOUD_SECRET')
+cloudinary.config(
+    cloud_name="dtudhghlr",
+    api_key="797848647357532",
+    api_secret="vJ0xnWIasfPaBo-5cdFDSASOtQg",
+    secure=True
 )
-
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config('CLOUD_KEY'),
-    'API_SECRET': config('CLOUD_SECRET')
-}
 
 
 
@@ -114,7 +107,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = [
-    'theinstaclone.herokuapp.com',
+    'instagram-clone-larv.herokuapp.com',
     '127.0.0.1'
 ]
 
