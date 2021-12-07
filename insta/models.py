@@ -33,7 +33,7 @@ class Image(models.Model):
   def delete_post(self):
     self.delete()
 
-  def __str__(self):
+  def _str_(self):
     return "%s image" % self.name
 
 class Like(models.Model):
@@ -41,7 +41,7 @@ class Like(models.Model):
   image = models.ForeignKey(Image, on_delete = models.CASCADE,related_name='imagelikes')
   user = models.ForeignKey(User,on_delete = models.CASCADE,related_name='userlikes')
 
-  def __str__(self):
+  def _str_(self):
     return "%s like" % self.image
 
 class Comment(models.Model):
@@ -54,7 +54,7 @@ class Comment(models.Model):
     comments = cls.objects.filter(image_id = image_id)
     return comments
 
-  def __str__(self):
+  def _str_(self):
     return "%s comment" % self.image
 
 class Profile(models.Model):
@@ -93,16 +93,15 @@ class Profile(models.Model):
 
   @classmethod
   def search_profiles(cls,search_term):
-    profiles = cls.objects.filter(user__username__icontains = search_term).all()
+    profiles = cls.objects.filter(user_username_icontains = search_term).all()
     return profiles
 
-  def __str__(self):
+  def _str_(self):
     return "%s profile" % self.user
 
 class Follows(models.Model):
   follower = models.ForeignKey(Profile, related_name='following',on_delete = models.CASCADE)
   followee = models.ForeignKey(Profile, related_name='followers',on_delete = models.CASCADE)
 
-  def __str__(self):
-    return "%s follower" % self.follower 
-
+  def _str_(self):
+    return "%s follower" % self.follower
